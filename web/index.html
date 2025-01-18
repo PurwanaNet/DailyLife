@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Life @ KKGI</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-y: scroll; /* Make y-axis scrollable */
+  margin: 0;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* Light text color */
+  transition: background 2s ease, color 2s ease; /* Added color transition */
+}
+
+.button-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.button-list li {
+  margin-bottom: 15px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white; /* Text color remains white for buttons */
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53); /* Gradient remains the same */
+  background-size: 400% 400%;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.text {
+  margin-left: 10px;
+}
+</style>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=64f9be263975550019129176&product=inline-share-buttons' async='async'></script>
+</head>
+<body>
+ <ul class="button-list">
+    <li>
+		<h1>Daily Life @ KKGI.MY.ID</h1>
+    </li> 
+	<p id="result"></p>	
+	<div class="sharethis-inline-share-buttons"></div><br/>
+    <li>
+      <a href="/logbook" class="button">
+        <span class="text">LOGBOOK</span>
+      </a>
+    </li>  	
+    <li>
+      <a href="https://gameshop.purwana.net/" class="button">
+        <span class="text">Gaming Marketplace</span>
+      </a>
+    </li> 	
+    <li>
+      <a href="/mood-tracker" class="button">
+        <span class="text">Mood Tracker</span>
+      </a>
+    </li>  
+    <li>
+      <a href="/habit-tracker" class="button">
+        <span class="text">Habit Tracker</span>
+      </a>
+    </li>	
+    <li>
+      <a href="/countdown-timer" class="button">
+        <span class="text">Countdown Timer</span>
+      </a>
+    </li>
+    <li>
+      <a href="/reading-list" class="button">
+        <span class="text">Reading List</span>
+      </a>
+    </li>	
+    <li>
+      <a href="/water-intake-tracker" class="button">
+        <span class="text">Water Intake Tracker</span>
+      </a>
+    </li>
+    <li>
+      <a href="/workout-log" class="button">
+        <span class="text">Workout Log</span>
+      </a>
+    </li>
+    <li>
+      <a href="/random-quote-generator" class="button">
+        <span class="text">Random Quote Generator</span>
+      </a>
+    </li>
+    <li>
+      <a href="/grocery-list" class="button">
+        <span class="text">Grocery List</span>
+      </a>
+    </li>
+    <li>
+      <a href="/language-practice" class="button">
+        <span class="text">Language Practice</span>
+      </a>
+    </li>	
+  </ul>
+<script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({
+		  google_ad_client: "ca-pub-0170728254931540",
+		  enable_page_level_ads: true
+	});
+</script>  
+
+<script>
+	async function checkAppInstallation() {
+		const resultElement = document.getElementById('result');
+
+		if ('getInstalledRelatedApps' in navigator) {
+			try {
+				const relatedApps = await navigator.getInstalledRelatedApps();
+
+				const appFound = relatedApps.some(app => app.id === 'net.purwana.gamelauncher');
+
+				if (appFound) {
+					resultElement.textContent = "The Game Center app is installed on this device.";					
+				} else {
+					resultElement.textContent = "The Game Center app is not installed on this device.";
+					// Get reference to the menu list and the LOGBOOK <li>
+					const menu = document.querySelector('ul.button-list');
+					const logbookItem = menu.querySelector('a[href="/logbook"]').parentElement;
+
+					// Create the new GAME CENTER <li> element
+					const gameCenterItem = document.createElement('li');
+					gameCenterItem.innerHTML = `
+						<a href="https://github.com/PurwanaNet/LauncherForAndroid/releases/download/1.0.0/app-release.apk" class="button" target="_blank">
+							<span class="text">GAME CENTER</span>
+						</a>
+					`;
+
+					// Insert the GAME CENTER <li> before the LOGBOOK <li>
+					menu.insertBefore(gameCenterItem, logbookItem);					
+				}
+			} catch (error) {
+				console.error('Error checking installed apps:', error);
+				resultElement.textContent = "An error occurred while checking installed apps.";
+			}
+		} else {
+			resultElement.textContent = "The 'getInstalledRelatedApps' API is not supported on this device.";
+		}
+	}
+	
+	setTimeout(checkAppInstallation, 1.0 * 1000);
+</script>
+</body>
+</html>
